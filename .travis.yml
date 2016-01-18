@@ -12,19 +12,15 @@ before_script:
   - wget http://www.un4seen.com/files/bass24-$TRAVIS_OS_NAME.zip -O bass24.zip &&
     mkdir examples/include &&
     mkdir examples/lib &&
-    unzip -d bass24 bass24.zip &&
-    cp bass24/bass.h examples/include/;
-    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-      cp bass24/libbass.dylib examples/lib/;
-    fi;
-    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-      cp bass24/x64/libbass.so examples/lib/;
-    fi
+    unzip -d bass24 bass24.zip
 
 script:
-  - make &&
-    make examples/example_bass &&
-    make examples/example_bass-player
+  - autoreconf -i &&
+    mkdir build && (
+      cd build &&
+      ../configure --with-bass=`pwd`/../bass24 &&
+      make
+    )
 
 addons:
   apt:
