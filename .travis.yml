@@ -7,7 +7,9 @@ os:
 before_script:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
       brew install qt &&
-      brew install sdl;
+      brew install sdl &&
+      export GL_CFLAGS=" " GL_LIBS="-framework OpenGL" &&
+      export GLU_CFLAGS=" " GLU_LIBS=" ";
     fi
   - wget http://www.un4seen.com/files/bass24-$TRAVIS_OS_NAME.zip -O bass24.zip &&
     mkdir examples/include &&
