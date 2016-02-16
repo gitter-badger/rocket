@@ -19,6 +19,8 @@ cache:
 install:
   - nuget restore examples.vs2013.sln
   # download and install bass
+  - nslookup www.un4seen.com
+  - nslookup myip.opendns.com resolver1.opendns.com
   - if not exist bass24.zip curl -fsS -o bass24.zip http://www.un4seen.com/files/bass24.zip
   - 7z x -obass24 bass24.zip > NUL
   - mkdir examples\lib
