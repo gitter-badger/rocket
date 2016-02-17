@@ -22,7 +22,7 @@ install:
   - nslookup www.un4seen.com
   - nslookup myip.opendns.com resolver1.opendns.com
   - tracert www.un4seen.com
-  - if not exist bass24.zip curl -fsS -o bass24.zip http://www.un4seen.com/files/bass24.zip
+  - curl -fsS -o bass24.zip http://www.un4seen.com/files/bass24.zip
   - 7z x -obass24 bass24.zip > NUL
   - mkdir examples\lib
   - mkdir examples\lib64
