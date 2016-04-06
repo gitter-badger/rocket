@@ -51,7 +51,7 @@ TrackView::TrackView(QWidget *parent) :
 	selectStartTrack = selectStopTrack = 0;
 	selectStartRow = selectStopRow = 0;
 
-	updateFont();
+	updateFont(fontMetrics());
 	updatePalette();
 
 	handCursor = QCursor(Qt::OpenHandCursor);
@@ -81,13 +81,13 @@ void TrackView::updatePalette()
 	bookmarkBrush = QColor(128, 128, 255);
 }
 
-void TrackView::updateFont()
+void TrackView::updateFont(const QFontMetrics &fontMetrics)
 {
-	rowHeight = fontMetrics().lineSpacing();
-	trackWidth = fontMetrics().width('0') * 16;
+	rowHeight = fontMetrics.lineSpacing();
+	trackWidth = fontMetrics.width('0') * 16;
 
 	topMarginHeight = rowHeight + 4;
-	leftMarginWidth = fontMetrics().width('0') * 8;
+	leftMarginWidth = fontMetrics.width('0') * 8;
 }
 
 TrackView::~TrackView()
@@ -1026,7 +1026,7 @@ void TrackView::changeEvent(QEvent *event)
 {
 	switch (event->type()) {
 	case QEvent::FontChange:
-		updateFont();
+		updateFont(fontMetrics());
 		break;
 
 	case QEvent::PaletteChange:

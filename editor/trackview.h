@@ -7,6 +7,7 @@
 #include <QPainter>
 
 class QLineEdit;
+class QFontMetrics;
 class SyncDocument;
 class SyncTrack;
 
@@ -157,7 +158,7 @@ private:
 	int trackWidth;
 	int topMarginHeight;
 	int leftMarginWidth;
-	void updateFont();
+	void updateFont(const QFontMetrics &fontMetrics);
 
 	QBrush bgBaseBrush, bgDarkBrush;
 	QBrush selectBaseBrush, selectDarkBrush;
